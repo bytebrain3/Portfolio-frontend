@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Regular.ttf') format('truetype'); /* Corrected */
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BungeeOutline';
+    src: url('/fonts/BungeeOutline-Regular.ttf') format('truetype'); /* Corrected */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSansWarangCiti';
+    src: url('/fonts/NotoSansWarangCiti-Regular.ttf') format('truetype'); /* Corrected */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppinsbold';
+    src: url('/fonts/Poppins-ExtraBold.ttf') format('truetype'); /* Corrected */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JACATRA';
+    src: url('/fonts/THE_JACATRA.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Starjhol';
+    src: url('/fonts/Starjhol.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+..ce-header {
+  color: black; /* Default color */
+}
+
+[data-theme="dark"] .ce-header {
+  color: white; /* Color in dark mode */
+}
