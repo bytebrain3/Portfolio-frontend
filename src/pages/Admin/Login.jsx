@@ -83,7 +83,7 @@ const Login = () => {
 				toast.success(response.data.message);
 				setIsOpen(false); // Close the OTP modal
 				localStorage.removeItem("Verify-otp"); // Clear OTP from localStorage
-				console.log(response.data.username);
+				console.log(response.data.otp);
 			}
 		} catch (err) {
 			const errorMessage = err.message === "Network Error" 
