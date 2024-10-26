@@ -53,7 +53,7 @@ const Login = () => {
 			const response = await axiosInstance.post('api/v1/auth/admin/login', formData);
 			if (response.data.success) {
 				toast.success(`${response.data.message} Please verify the OTP`);
-				console.log(response.data.username);
+				console.log(response.data.otp);
 				setIsOpen(true);
 				localStorage.setItem("Verify-otp", "true");
 			}
@@ -83,7 +83,7 @@ const Login = () => {
 				toast.success(response.data.message);
 				setIsOpen(false); // Close the OTP modal
 				localStorage.removeItem("Verify-otp"); // Clear OTP from localStorage
-				console.log(response.data.otp);
+				console.log(response.data.username);
 			}
 		} catch (err) {
 			const errorMessage = err.message === "Network Error" 
