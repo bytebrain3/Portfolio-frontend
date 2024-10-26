@@ -61,7 +61,7 @@ const Login = () => {
 		} catch (err) {
 			console.error(err);
 			setError(err.response?.data?.message || 'Login failed. Please try again.');
-			toast.error(err.message === "Network Error" ? 'Network Error. Please try again.' : 'Login failed. Please try again.');
+			toast.error(err.response?.data?.message || 'Network Error. Please try again.');
 		} finally {
 			setIsLoading(false);
 		}
@@ -72,28 +72,27 @@ const Login = () => {
 
 		// Check if OTP length is exactly 6 digits
 		if (otp.length !== 6) {
-		 // Check if OTP length is exactly 6 digits
 			toast.error("OTP should be 6 digits");
-			setIsLoading(false); // reset loading if OTP length is invalid
+			setIsLoading(false);
 			return;
 		}
 		try {
-			const response = await axiosInstance.post('api/v1/auth/admin/verify-otp', { otp } , {withCredentials : true});
+			const response = await axiosInstance.post('api/v1/auth/admin/verify-otp', { otp }, { withCredentials: true });
 
 			if (response.data.success) {
 				toast.success(response.data.message);
-				setIsOpen(false); // Close the OTP modal
-				localStorage.removeItem("Verify-otp"); // Clear OTP from localStorage
+				setIsOpen(false);
+				localStorage.removeItem("Verify-otp");
 				console.log(response.data.username);
 			}
 		} catch (err) {
 			const errorMessage = err.message === "Network Error" 
 				? 'Network Error. Please try again.' 
-				: 'Verification failed. Please try again.';
+				: err.response?.data?.message || 'Verification failed. Please try again.';
 			toast.error(errorMessage);
-			console.log(err)
+			console.log(err);
 		} finally {
-			setIsLoading(false); // Always reset loading status
+			setIsLoading(false);
 		}
 	};
 
@@ -108,7 +107,6 @@ const Login = () => {
 						<Input
 							type="text"
 							name="username"
-							
 							placeholder="Username"
 							label="Username *"
 							variant="secondary"
@@ -118,7 +116,6 @@ const Login = () => {
 						<Input
 							type="email"
 							name="email"
-							
 							placeholder="Email"
 							label="Email *"
 							variant="secondary"
@@ -128,27 +125,25 @@ const Login = () => {
 						<Input
 							type="password"
 							name="password"
-							
 							placeholder="Password"
 							label="Password"
 							variant="secondary"
 							value={formData.password}
 							onChange={handleChange}
 						/>
+						<CardFooter>
+							<Button
+								type="submit"
+								variant="dark"
+								className="w-full"
+								disabled={isLoading}
+								loading={isLoading}
+							>
+								Login
+							</Button>
+						</CardFooter>
 					</form>
 				</CardContent>
-				<CardFooter>
-					<Button
-						type="submit"
-						variant="dark"
-						className="w-full"
-						onClick={handleSubmit}
-						disabled={isLoading}
-						loading={isLoading}
-					>
-						Login
-					</Button>
-				</CardFooter>
 			</Card>
 
 			{/* Drawer for OTP Verification */}
@@ -177,3 +172,4 @@ const Login = () => {
 };
 
 export default Login;
+		
