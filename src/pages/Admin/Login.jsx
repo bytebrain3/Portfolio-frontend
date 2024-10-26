@@ -50,7 +50,7 @@ const Login = () => {
 		}
 
 		try {
-			const response = await axiosInstance.post('api/v1/auth/admin/login', formData);
+			const response = await axiosInstance.post('api/v1/auth/admin/login', formData ,{withCredentials : true } );
 			if (response.data.success) {
 				toast.success(`${response.data.message} Please verify the OTP`);
 				console.log("Please verify the OTP");
@@ -78,7 +78,7 @@ const Login = () => {
 			return;
 		}
 		try {
-			const response = await axiosInstance.post('api/v1/auth/admin/verify-otp', { otp });
+			const response = await axiosInstance.post('api/v1/auth/admin/verify-otp', { otp } , {withCredentials : true});
 
 			if (response.data.success) {
 				toast.success(response.data.message);
