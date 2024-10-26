@@ -24,7 +24,7 @@ const TestPage = () => {
       // If request is successful
       if (response.data.success) {
         setError(response.data.message); // Display success message
-        setData(response.data.data)
+        setData(response.data)
       } else {
         setError(response.data.message); // Display fallback error message
       }
