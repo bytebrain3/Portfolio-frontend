@@ -107,30 +107,30 @@ const Login = () => {
 						<Input
 							type="text"
 							name="username"
-							required
+							
 							placeholder="Username"
 							label="Username *"
-							variant="filled"
+							variant="secondary"
 							value={formData.username}
 							onChange={handleChange}
 						/>
 						<Input
 							type="email"
 							name="email"
-							required
+							
 							placeholder="Email"
 							label="Email *"
-							variant="filled"
+							variant="secondary"
 							value={formData.email}
 							onChange={handleChange}
 						/>
 						<Input
 							type="password"
 							name="password"
-							required
+							
 							placeholder="Password"
 							label="Password"
-							variant="filled"
+							variant="secondary"
 							value={formData.password}
 							onChange={handleChange}
 						/>

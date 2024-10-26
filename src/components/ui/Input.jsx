@@ -3,10 +3,6 @@ import { motion } from 'framer-motion';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { SiGooglegemini } from "react-icons/si";
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
 
 
 const Input = ({ 
@@ -69,17 +65,8 @@ const Input = ({
     setPasswordStrength(calculatePasswordStrength(password)); // Update password strength
   };
 
-  // Backdrop blur animation settings for each character
-  const typingAnimation = {
-    initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.05, ease: 'easeInOut' }
-  };
-
   return (
     <div
-      
-      
       className="mb-4">
       {label && (
         <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
@@ -87,21 +74,15 @@ const Input = ({
         </label>
       )}
       <div className="relative flex items-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 0.15, scale: 1 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="absolute inset-0 backdrop-blur-lg"
-        ></motion.div>
-        
-        <motion.input
+
+        <input
           type={type === 'password' && showPassword ? 'text' : type}
           value={value}
           className={`${style} ${passwordStrength < 2 && check_strong_password ? 'border-red-500 dark:border-red-500' : ''} ${check_strong_password ? 'pr-36' : 'pr-10'} `} // Added padding for the buttons
+           
           placeholder={placeholder}
           onChange={handleChange}
           {...props}
-          {...typingAnimation}
         />
 
         {/* Button to generate random password */}
