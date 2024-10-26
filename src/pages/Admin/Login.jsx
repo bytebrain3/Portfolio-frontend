@@ -141,7 +141,7 @@ const Login = () => {
 					<Button
 						type="submit"
 						variant="dark"
-						className="w-full bg-zinc-900"
+						className="w-full"
 						onClick={handleSubmit}
 						disabled={isLoading}
 						loading={isLoading}
